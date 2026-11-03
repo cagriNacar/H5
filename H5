@@ -1,0 +1,56 @@
+double[] week = {14.2, 17.5, 19.0, 16.8, 21.3, 22.7, 18.4};
+
+double ave = Average(week);
+
+Console.WriteLine($"Average of the week: {ave:F2}" );
+
+Console.WriteLine();
+
+double max = 0;
+int counter = 1;
+
+foreach( double d in week)
+{
+    if ( d > max)
+    {
+        max = d; 
+        
+       counter++;
+    }
+}
+
+Console.WriteLine($"Hottest Day is {counter}. day and temperature is {max}. ");
+
+Console.WriteLine();
+for ( int i = 0; i < week.Length; i++)
+{
+    if (week[i] > ave)
+    {
+        Console.WriteLine($"{i+1}. day is hotter than average.");
+    }
+    else
+    {
+        Console.WriteLine($"{i + 1}. day is colder than average.");
+    }
+}
+
+Console.Write("\nLast three days temperature is: ");
+
+foreach( double d in week[^3..])
+{
+    Console.Write(d + "  " );
+}
+
+
+static double Average(double[] t)
+{
+    double sum = 0;
+    foreach (double d in t)
+    {
+        sum += d;
+    }
+
+    double f1 = sum / t.Length;
+
+    return f1;
+}
